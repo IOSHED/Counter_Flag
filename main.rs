@@ -1,13 +1,14 @@
 fn main() {
+    let win = false;
     let counter = [false; 3];
     let location_points: [[String; 2]; 3] = [[String::from("100\n"), String::from("200\n")],
                                              [String::from("123\n"), String::from("123\n")],
                                              [String::from("567\n"), String::from("342\n")]];
-    counter_flag(counter, location_points);
+    counter_flag(win, counter, location_points);
 }
 
-fn counter_flag(mut counter: [bool; 3], location_points: [[String; 2]; 3]) {
-    loop {
+fn counter_flag(mut win: bool, mut counter: [bool; 3], location_points: [[String; 2]; 3]) {
+    while win == false {
         let x= creature_input(String::from("X"));
         let y = creature_input(String::from("Y"));
 
@@ -17,6 +18,7 @@ fn counter_flag(mut counter: [bool; 3], location_points: [[String; 2]; 3]) {
                 println!("================Point: {:?}================", counter);
                 if counter[0] && counter[1] && counter[2] {
                     println!("________________-------|You win!.|-------________________");
+                    win = true;
                 }
             }
         }
